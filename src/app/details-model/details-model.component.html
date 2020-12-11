@@ -1,0 +1,73 @@
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterTitle">Details</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="close()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div *ngIf="modelData && modelData.links.video_link" class="row text-left">
+          <div class="col-md-5">
+            <div class="col-md-12">
+              <iframe width="520" height="315" [src]="modelData.links.video_link | youtube" frameborder="0"
+                allowfullscreen></iframe>
+            </div>
+            <div class="row ml-1">
+              <h6 class="col-md-12">Important Link</h6>
+              <div class="col-md-1" *ngIf="modelData.links.mission_patch">
+                <a [href]="modelData.links.mission_patch" target="_blank"><i class="fa fa-download"
+                    aria-hidden="true"></i></a>
+              </div>
+              <div class="col-md-1" *ngIf="modelData.links.wikipedia">
+                <a [href]="modelData.links.wikipedia" target="_blank"><i class="fa fa-wikipedia-w"
+                    aria-hidden="true"></i></a>
+              </div>
+              <div class="col-md-1" *ngIf="modelData.links.article_link">
+                <a [href]="modelData.links.article_link" target="_blank"><i class="fa fa-book"
+                    aria-hidden="true"></i></a>
+              </div>
+              <div class="col-md-1" *ngIf="modelData.links.reddit_campaign ||
+                modelData.links.reddit_launch ||
+                modelData.links.reddit_recovery ||
+                modelData.links.reddit_media">
+                <i class="fa fa-reddit" aria-hidden="true" (click)="toggleReddit()"></i>
+              </div>
+              <div class="col-md-1" *ngIf="modelData.links.presskit">
+                <a [href]="modelData.links.presskit" target="_blank"><i class="fa fa-newspaper-o"
+                    aria-hidden="true"></i></a>
+              </div>
+            </div>
+            <div class="row ml-1">
+              <h6 class="col-md-12">Details Description</h6>
+              <div class="col-md-12">
+                <p>
+                  {{modelData.details}}
+                </p>
+              </div>
+            </div>
+            <div class="row ml-1" *ngIf="isReddit">
+              <h6 class="col-md-12">Reddit Links</h6>
+              <div class="col-md-12">
+                <div *ngIf="modelData.links.reddit_campaign"><a [href]="modelData.links.reddit_campaign" target="_blank">Reddit
+                  Campaign  </a></div>
+              <div *ngIf="modelData.links.reddit_launch"><a [href]="modelData.links.reddit_launch" target="_blank">Reddit Launch  </a>
+              </div>
+              <div *ngIf="modelData.links.reddit_recovery"><a [href]="modelData.links.reddit_recovery" target="_blank">Reddit
+                  Recovery  </a></div>
+              <div *ngIf="modelData.links.reddit_media"><a [href]="modelData.links.reddit_media" target="_blank">Reddit Media  </a></div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-7">
+            <button type="button" class="btn btn-link" (click)="toggle()">{{btnName}}</button>
+            <ngx-json-viewer *ngIf="isShowJson" [json]="modelData" [expanded]="false"></ngx-json-viewer>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

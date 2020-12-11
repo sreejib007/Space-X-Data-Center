@@ -1,0 +1,13 @@
+main{
+  padding-top:70px;
+}
+/* fix padding under menu after resize */
+@media screen and (max-width: 767px) {
+  main { padding-top: 70px; }
+}
+@media screen and (min-width:768px) and (max-width: 991px) {
+  main { padding-top: 80px; }
+}
+@media screen and (min-width: 992px) {
+  main { padding-top:70px; } 
+}
